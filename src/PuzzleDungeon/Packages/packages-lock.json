@@ -14,6 +14,13 @@
       "dependencies": {},
       "hash": "d7976b4ab73565106cf226042daff4097c33fb2e"
     },
+    "com.d4nilevi4.leontitas.systems": {
+      "version": "https://github.com/d4nilevi4/Leontitas.git?path=src/Leontitas.Unity/Systems",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "d7976b4ab73565106cf226042daff4097c33fb2e"
+    },
     "com.unity.ai.navigation": {
       "version": "2.0.9",
       "depth": 0,
