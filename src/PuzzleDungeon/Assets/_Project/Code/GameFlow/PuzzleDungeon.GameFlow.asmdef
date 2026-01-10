@@ -1,0 +1,21 @@
+{
+    "name": "PuzzleDungeon.GameFlow",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bcf8ffce2812f644d9ac999514f94632",
+        "GUID:57f893924776c504d896e40b7e9ef70b",
+        "GUID:c89b07cb2fd3a494a96bbcff72fb2cd1",
+        "GUID:211e99e9b7571334ab1753cc3ab750bf",
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
