@@ -1,0 +1,17 @@
+{
+    "name": "PuzzleDungeon.VContainer",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bcf8ffce2812f644d9ac999514f94632",
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": true
+}
