@@ -1,0 +1,16 @@
+{
+    "name": "PuzzleDungeon.Gameplay",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bcf8ffce2812f644d9ac999514f94632"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": true
+}
