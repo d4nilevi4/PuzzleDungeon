@@ -2,7 +2,9 @@
     "name": "PuzzleDungeon.Gameplay",
     "rootNamespace": "",
     "references": [
-        "GUID:bcf8ffce2812f644d9ac999514f94632"
+        "GUID:bcf8ffce2812f644d9ac999514f94632",
+        "GUID:939327744fc5cc845a42830368d262cb",
+        "GUID:e59bf9fc7d5a44b18a819a92edd46163"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
