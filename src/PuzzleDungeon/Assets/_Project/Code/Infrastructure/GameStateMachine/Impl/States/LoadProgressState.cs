@@ -1,5 +1,6 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace PuzzleDungeon.Infrastructure;
 
@@ -14,17 +15,20 @@ public class LoadProgressState : IState
 
     public async UniTask Enter(CancellationToken cancellationToken)
     {
-// #if UNITY_EDITOR
-//         string key = SwitchToEntrySceneInEditor.CURRENT_SCENE_NAME_KEY;
-//             
-//         if (EditorPrefs.HasKey(key))
-//         {
-//             sceneName = EditorPrefs.GetString(key);
-//
-//             EditorPrefs.DeleteKey(key);
-//         }
-// #endif
-        await _stateMachine.Enter<LoadSceneState, string>(SceneNames.MAIN_MENU_SCENE, cancellationToken);
+        string sceneName = SceneNames.MAIN_MENU_SCENE;
+
+#if UNITY_EDITOR
+        string key = SwitchToEntrySceneInEditor.CURRENT_SCENE_NAME_KEY;
+
+        if (UnityEditor.EditorPrefs.HasKey(key))
+        {
+            sceneName = UnityEditor.EditorPrefs.GetString(key);
+            
+            UnityEditor.EditorPrefs.DeleteKey(key);
+        }
+#endif
+        
+        await _stateMachine.Enter<LoadSceneState, string>(sceneName, cancellationToken);
     }
 
     public UniTask Exit(CancellationToken cancellationToken) =>
