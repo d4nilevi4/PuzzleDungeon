@@ -2,7 +2,8 @@
     "name": "PuzzleDungeon.Core",
     "rootNamespace": "",
     "references": [
-        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:939327744fc5cc845a42830368d262cb"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
