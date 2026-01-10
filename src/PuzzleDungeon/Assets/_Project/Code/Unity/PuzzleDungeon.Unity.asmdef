@@ -1,0 +1,18 @@
+{
+    "name": "PuzzleDungeon.Unity",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bcf8ffce2812f644d9ac999514f94632",
+        "GUID:c89b07cb2fd3a494a96bbcff72fb2cd1",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
