@@ -1,0 +1,16 @@
+{
+    "name": "Leontitas.Extensions",
+    "rootNamespace": "",
+    "references": [
+        "GUID:939327744fc5cc845a42830368d262cb"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": true
+}
