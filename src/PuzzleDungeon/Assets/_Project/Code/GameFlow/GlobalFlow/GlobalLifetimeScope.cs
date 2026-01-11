@@ -5,7 +5,6 @@ using PuzzleDungeon.Core.Progress;
 using PuzzleDungeon.Core.SceneLoading;
 using PuzzleDungeon.Core.Serializer;
 using PuzzleDungeon.Core.Systems;
-using PuzzleDungeon.GameFlow.GameStateMachine;
 using PuzzleDungeon.Gameplay.Progress;
 using PuzzleDungeon.Unity.Logger;
 using PuzzleDungeon.Unity.Progress;
@@ -18,11 +17,11 @@ using VContainer.Unity;
 
 namespace PuzzleDungeon.GameFlow
 {
-    public class RootLifetimeScope : LifetimeScope, ICompositionRoot
+    public class GlobalLifetimeScope : LifetimeScope, ICompositionRoot
     {
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.RegisterEntryPoint<EntryPoint>(Lifetime.Singleton);
+            builder.RegisterEntryPoint<GlobalEntryPoint>(Lifetime.Singleton);
 
             ConfigureGameStateMachine(builder);
 
@@ -66,7 +65,7 @@ namespace PuzzleDungeon.GameFlow
 
         private void ConfigureGameStateMachine(IContainerBuilder builder)
         {
-            builder.Register<IGameStateMachine, GlobalGameStateMachine>(Lifetime.Singleton);
+            builder.Register<IGameStateMachine, CommonGameStateMachine>(Lifetime.Singleton);
             builder.Register<IStateFactory, PooledStateFactory>(Lifetime.Singleton);
         }
     }

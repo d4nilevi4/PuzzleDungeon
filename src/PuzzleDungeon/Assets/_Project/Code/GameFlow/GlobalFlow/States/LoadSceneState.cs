@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using PuzzleDungeon.Core.GameStateMachine;
 using PuzzleDungeon.Core.SceneLoading;
 
-namespace PuzzleDungeon.GameFlow.GameStateMachine;
+namespace PuzzleDungeon.GameFlow.Global;
 
 public class LoadSceneState : IPayloadState<string>
 {

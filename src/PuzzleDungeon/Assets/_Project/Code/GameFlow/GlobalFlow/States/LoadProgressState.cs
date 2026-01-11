@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using PuzzleDungeon.Core.GameStateMachine;
 using PuzzleDungeon.Core.Progress;
 
-namespace PuzzleDungeon.GameFlow.GameStateMachine;
+namespace PuzzleDungeon.GameFlow.Global;
 
 public class LoadProgressState<TProgress> : IState where TProgress : IProgress
 {

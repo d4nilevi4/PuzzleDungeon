@@ -3,19 +3,19 @@ using Cysharp.Threading.Tasks;
 using PuzzleDungeon.Core.GameStateMachine;
 using PuzzleDungeon.Core.Logger;
 using PuzzleDungeon.Core.SceneLoading;
-using PuzzleDungeon.GameFlow.GameStateMachine;
+using PuzzleDungeon.GameFlow.Global;
 using PuzzleDungeon.Gameplay.Progress;
 using PuzzleDungeon.Unity.SceneLoading;
 using VContainer.Unity;
 
 namespace PuzzleDungeon.GameFlow
 {
-    public class EntryPoint : IAsyncStartable
+    public class GlobalEntryPoint : IAsyncStartable
     {
         private readonly IGameStateMachine _gameStateMachine;
         private readonly ILogger _logger;
 
-        public EntryPoint(IGameStateMachine gameStateMachine, ILogger logger)
+        public GlobalEntryPoint(IGameStateMachine gameStateMachine, ILogger logger)
         {
             _gameStateMachine = gameStateMachine;
             _logger = logger;
