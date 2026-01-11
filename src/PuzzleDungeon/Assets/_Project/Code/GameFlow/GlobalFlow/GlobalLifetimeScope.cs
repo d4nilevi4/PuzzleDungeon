@@ -5,12 +5,14 @@ using PuzzleDungeon.Core.Progress;
 using PuzzleDungeon.Core.SceneLoading;
 using PuzzleDungeon.Core.Serializer;
 using PuzzleDungeon.Core.Systems;
+using PuzzleDungeon.Core.View;
 using PuzzleDungeon.Gameplay.Progress;
 using PuzzleDungeon.Unity.Logger;
 using PuzzleDungeon.Unity.Progress;
 using PuzzleDungeon.VContainer.GameStateMachine;
 using PuzzleDungeon.Unity.SceneLoading;
 using PuzzleDungeon.Unity.Serializer;
+using PuzzleDungeon.Unity.View;
 using PuzzleDungeon.VContainer.Systems;
 using VContainer;
 using VContainer.Unity;
@@ -34,6 +36,13 @@ namespace PuzzleDungeon.GameFlow
             ConfigureSerialization(builder);
 
             ConfigureSystemFactory(builder);
+            
+            ConfigureEntityViewFactory(builder);
+        }
+
+        private void ConfigureEntityViewFactory(IContainerBuilder builder)
+        {
+            builder.Register<IEntityViewFactory, UnityEntityViewFactory>(Lifetime.Singleton);
         }
 
         private void ConfigureSystemFactory(IContainerBuilder builder)
