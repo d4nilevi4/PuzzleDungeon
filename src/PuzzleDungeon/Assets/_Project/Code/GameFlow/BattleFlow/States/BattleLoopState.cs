@@ -27,7 +27,6 @@ public class BattleLoopState : IState
     
     public UniTask Enter(CancellationToken cancellationToken)
     {
-        GameWorld.Create();
         _battleFeature = (BattleFeature)_systemFactory.Create<BattleFeature>();
         
         _lifetimeEventsProducer.EventInitialize += OnInitialize;
