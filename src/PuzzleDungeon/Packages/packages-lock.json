@@ -28,6 +28,13 @@
       "dependencies": {},
       "hash": "153dfd4043e1471a01a201624dcbebb25436b638"
     },
+    "com.mitfart.leoecslite.unity-integration": {
+      "version": "https://github.com/Mitfart/LeoECSLite.UnityIntegration.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "eb89f798bf570373b236b559e929be24d0a5789d"
+    },
     "com.unity.ai.navigation": {
       "version": "2.0.9",
       "depth": 0,

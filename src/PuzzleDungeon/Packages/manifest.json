@@ -4,6 +4,7 @@
     "com.d4nilevi4.leontitas": "https://github.com/d4nilevi4/Leontitas.git?path=src/Leontitas.Unity/Core",
     "com.d4nilevi4.leontitas.systems": "https://github.com/d4nilevi4/Leontitas.git?path=src/Leontitas.Unity/Systems",
     "com.leopotam.ecslite": "https://github.com/Leopotam/ecslite.git",
+    "com.mitfart.leoecslite.unity-integration": "https://github.com/Mitfart/LeoECSLite.UnityIntegration.git",
     "com.unity.ai.navigation": "2.0.9",
     "com.unity.collab-proxy": "2.10.2",
     "com.unity.ide.rider": "3.0.38",

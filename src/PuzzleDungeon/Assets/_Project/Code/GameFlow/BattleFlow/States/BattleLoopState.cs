@@ -1,6 +1,8 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
 using Leontitas;
+using Leopotam.EcsLite;
+using Mitfart.LeoECSLite.UnityIntegration;
 using PuzzleDungeon.Core.Events;
 using PuzzleDungeon.Core.GameStateMachine;
 using PuzzleDungeon.Core.Systems;
@@ -13,21 +15,46 @@ public class BattleLoopState : IState
 {
     private readonly ILifetimeEventsProducer _lifetimeEventsProducer;
     private readonly ISystemFactory _systemFactory;
+    private readonly InputWorld _inputWorld;
+    private readonly GameWorld _gameWorld;
 
     private BattleFeature _battleFeature;
+    
+#if UNITY_EDITOR
+    private EcsWorldDebugSystem _inputDebug;
+    private EcsWorldDebugSystem _gameDebug;
+#endif
 
     public BattleLoopState(
         ILifetimeEventsProducer lifetimeEventsProducer,
-        ISystemFactory systemFactory
+        ISystemFactory systemFactory,
+        InputWorld inputWorld,
+        GameWorld gameWorld
     )
     {
         _lifetimeEventsProducer = lifetimeEventsProducer;
         _systemFactory = systemFactory;
+        _inputWorld = inputWorld;
+        _gameWorld = gameWorld;
     }
     
     public UniTask Enter(CancellationToken cancellationToken)
     {
         _battleFeature = (BattleFeature)_systemFactory.Create<BattleFeature>();
+        
+#if UNITY_EDITOR
+        var dummyInputSystems = new EcsSystems(_inputWorld);
+        var dummyGameSystems = new EcsSystems(_gameWorld);
+        
+        _inputDebug = new EcsWorldDebugSystem(null, null);
+        _gameDebug = new EcsWorldDebugSystem(null, null);
+        
+        ((EcsWorld)_inputWorld).AddEventListener(_inputDebug);
+        ((EcsWorld)_gameWorld).AddEventListener(_gameDebug);
+
+        _inputDebug.PreInit(dummyInputSystems);
+        _gameDebug.PreInit(dummyGameSystems);
+#endif
         
         _lifetimeEventsProducer.EventInitialize += OnInitialize;
         _lifetimeEventsProducer.EventFixedUpdate += OnFixedUpdate;
@@ -41,6 +68,11 @@ public class BattleLoopState : IState
     public async UniTask Exit(CancellationToken cancellationToken)
     {
         await Awaitable.EndOfFrameAsync(cancellationToken);
+        
+#if UNITY_EDITOR
+        ((EcsWorld)_inputWorld).RemoveEventListener(_inputDebug);
+        ((EcsWorld)_gameWorld).RemoveEventListener(_gameDebug);
+#endif
         
         _lifetimeEventsProducer.EventInitialize -= OnInitialize;
         _lifetimeEventsProducer.EventFixedUpdate -= OnFixedUpdate;
@@ -66,6 +98,10 @@ public class BattleLoopState : IState
     {
         _battleFeature.PreExecute();
         _battleFeature.Execute();
+#if UNITY_EDITOR
+        _inputDebug.Run(null);
+        _gameDebug.Run(null);
+#endif
     }
 
     private void OnLateUpdate()
