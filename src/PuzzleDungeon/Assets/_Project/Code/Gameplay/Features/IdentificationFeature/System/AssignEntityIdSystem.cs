@@ -1,0 +1,26 @@
+﻿using Leontitas;
+
+namespace PuzzleDungeon.Gameplay.Identification;
+
+public sealed class AssignEntityIdSystem : IExecuteSystem
+{
+    private readonly GameGroup _idCandidates;
+    private readonly GameGroup _idNextIds;
+
+    public AssignEntityIdSystem(GameWorld game)
+    {
+        _idCandidates = game.GetGroup(GameMatcher.AllOf(GameMatcher.NeedId));
+        _idNextIds = game.GetGroup(GameMatcher.AllOf(GameMatcher.NextId));
+    }
+    
+    public void Execute()
+    {
+        foreach (GameEntity idCandidate in _idCandidates)
+        foreach (GameEntity nextId in _idNextIds)
+        {
+            idCandidate.AddId(nextId.NextId);
+            nextId.ChangeId(nextId.NextId + 1);
+            idCandidate.SetNeedIdFlag(false);
+        }
+    }
+}
