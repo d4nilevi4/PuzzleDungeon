@@ -1,6 +1,6 @@
 ﻿using Leontitas;
 using PuzzleDungeon.Core.Systems;
-using PuzzleDungeon.Gameplay.Input;
+using PuzzleDungeon.Gameplay.InputHandling;
 
 namespace PuzzleDungeon.Gameplay;
 
