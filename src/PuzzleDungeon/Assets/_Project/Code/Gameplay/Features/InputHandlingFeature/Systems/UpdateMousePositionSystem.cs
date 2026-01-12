@@ -5,20 +5,20 @@ namespace PuzzleDungeon.Gameplay.InputHandling;
 public sealed class UpdateMousePositionSystem : IPreExecuteSystem
 {
     private readonly InputGroup _mousePositions;
-    private readonly InputGroup _playerInputs;
+    private readonly InputGroup _gameInputActions;
 
     public UpdateMousePositionSystem(InputWorld input)
     {
         _mousePositions = input.GetGroup(InputMatcher.AllOf(InputMatcher.MousePosition));
-        _playerInputs = input.GetGroup(InputMatcher.AllOf(InputMatcher.PlayerInputComponent));
+        _gameInputActions = input.GetGroup(InputMatcher.AllOf(InputMatcher.GameplayInputActions));
     }
     
     public void PreExecute()
     {
-        foreach (InputEntity playerInput in _playerInputs)
+        foreach (InputEntity playerInput in _gameInputActions)
         foreach (InputEntity mousePosition in _mousePositions)
         {
-            mousePosition.ChangeMousePosition(playerInput.PlayerInput.Gameplay.MousePosition.ReadValue<Vector2>());
+            mousePosition.ChangeMousePosition(playerInput.GameplayInputActions.MousePosition.ReadValue<Vector2>());
         }
     }
 }

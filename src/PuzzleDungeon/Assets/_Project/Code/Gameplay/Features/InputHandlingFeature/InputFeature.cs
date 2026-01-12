@@ -13,6 +13,7 @@ public sealed class InputFeature : CustomFeature
 
         Add(systemFactory.Create<UpdateMousePositionSystem>());
         Add(systemFactory.Create<UpdateMousePositionDeltaSystem>());
+        Add(systemFactory.Create<HandleInteractionInputSystem>());
         
         Add(systemFactory.Create<DisposeInputMapTearDownSystem>());
     }

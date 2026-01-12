@@ -4,21 +4,21 @@ namespace PuzzleDungeon.Gameplay.InputHandling;
 
 public sealed class InitializeMousePositionSystem : IInitializeSystem
 {
-    private readonly InputGroup _playerInputs;
+    private readonly InputGroup _gameInputActions;
 
     public InitializeMousePositionSystem(InputWorld input)
     {
-        _playerInputs = input.GetGroup(InputMatcher.AllOf(InputMatcher.PlayerInputComponent));
+        _gameInputActions = input.GetGroup(InputMatcher.AllOf(InputMatcher.GameplayInputActions));
     }
     
     public void Initialize()
     {
         InputEntity mousePositionEntity = InputEntity.Create();
 
-        foreach (InputEntity playerInput in _playerInputs)
+        foreach (InputEntity playerInput in _gameInputActions)
         {
-            mousePositionEntity.AddMousePosition(playerInput.PlayerInput.Gameplay.MousePosition.ReadValue<Vector2>());
-            mousePositionEntity.AddMousePositionDelta(playerInput.PlayerInput.Gameplay.MouseDelta.ReadValue<Vector2>());
+            mousePositionEntity.AddMousePosition(playerInput.GameplayInputActions.MousePosition.ReadValue<Vector2>());
+            mousePositionEntity.AddMousePositionDelta(playerInput.GameplayInputActions.MouseDelta.ReadValue<Vector2>());
         }
     }
 }

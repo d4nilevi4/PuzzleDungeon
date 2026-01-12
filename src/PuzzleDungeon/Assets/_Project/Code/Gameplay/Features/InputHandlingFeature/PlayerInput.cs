@@ -111,6 +111,15 @@ namespace PuzzleDungeon.Gameplay.InputHandling
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Interaction"",
+                    ""type"": ""Button"",
+                    ""id"": ""3a4f303a-91e9-459e-a293-e01647e1b8b3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -135,6 +144,17 @@ namespace PuzzleDungeon.Gameplay.InputHandling
                     ""action"": ""MouseDelta"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e1ebbea2-0240-40e1-871f-e2b2c68532a4"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -145,6 +165,7 @@ namespace PuzzleDungeon.Gameplay.InputHandling
             m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
             m_Gameplay_MousePosition = m_Gameplay.FindAction("MousePosition", throwIfNotFound: true);
             m_Gameplay_MouseDelta = m_Gameplay.FindAction("MouseDelta", throwIfNotFound: true);
+            m_Gameplay_Interaction = m_Gameplay.FindAction("Interaction", throwIfNotFound: true);
         }
 
         ~@PlayerInput()
@@ -227,6 +248,7 @@ namespace PuzzleDungeon.Gameplay.InputHandling
         private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
         private readonly InputAction m_Gameplay_MousePosition;
         private readonly InputAction m_Gameplay_MouseDelta;
+        private readonly InputAction m_Gameplay_Interaction;
         /// <summary>
         /// Provides access to input actions defined in input action map "Gameplay".
         /// </summary>
@@ -246,6 +268,10 @@ namespace PuzzleDungeon.Gameplay.InputHandling
             /// Provides access to the underlying input action "Gameplay/MouseDelta".
             /// </summary>
             public InputAction @MouseDelta => m_Wrapper.m_Gameplay_MouseDelta;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/Interaction".
+            /// </summary>
+            public InputAction @Interaction => m_Wrapper.m_Gameplay_Interaction;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -278,6 +304,9 @@ namespace PuzzleDungeon.Gameplay.InputHandling
                 @MouseDelta.started += instance.OnMouseDelta;
                 @MouseDelta.performed += instance.OnMouseDelta;
                 @MouseDelta.canceled += instance.OnMouseDelta;
+                @Interaction.started += instance.OnInteraction;
+                @Interaction.performed += instance.OnInteraction;
+                @Interaction.canceled += instance.OnInteraction;
             }
 
             /// <summary>
@@ -295,6 +324,9 @@ namespace PuzzleDungeon.Gameplay.InputHandling
                 @MouseDelta.started -= instance.OnMouseDelta;
                 @MouseDelta.performed -= instance.OnMouseDelta;
                 @MouseDelta.canceled -= instance.OnMouseDelta;
+                @Interaction.started -= instance.OnInteraction;
+                @Interaction.performed -= instance.OnInteraction;
+                @Interaction.canceled -= instance.OnInteraction;
             }
 
             /// <summary>
@@ -349,6 +381,13 @@ namespace PuzzleDungeon.Gameplay.InputHandling
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnMouseDelta(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Interaction" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnInteraction(InputAction.CallbackContext context);
         }
     }
 }
