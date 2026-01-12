@@ -1,6 +1,6 @@
 ﻿using Leontitas;
 
-namespace PuzzleDungeon.Gameplay.Input;
+namespace PuzzleDungeon.Gameplay.InputHandling;
 
 [Input] public struct PlayerInputComponent : IComponent { public PlayerInput Value; }
 

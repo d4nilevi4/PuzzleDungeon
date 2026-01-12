@@ -1,7 +1,7 @@
 ﻿using Leontitas;
 using PuzzleDungeon.Core.Systems;
 
-namespace PuzzleDungeon.Gameplay.Input;
+namespace PuzzleDungeon.Gameplay.InputHandling;
 
 public sealed class InputFeature : CustomFeature
 {
