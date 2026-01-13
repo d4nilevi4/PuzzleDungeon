@@ -9,7 +9,10 @@ public sealed class AssignEntityIdSystem : IExecuteSystem
 
     public AssignEntityIdSystem(GameWorld game)
     {
-        _idCandidates = game.GetGroup(GameMatcher.AllOf(GameMatcher.NeedId));
+        _idCandidates = game.GetGroup(GameMatcher
+            .AllOf(GameMatcher.NeedId)
+            .NoneOf(GameMatcher.Id));
+        
         _idNextIds = game.GetGroup(GameMatcher.AllOf(GameMatcher.NextId));
     }
     
@@ -19,7 +22,9 @@ public sealed class AssignEntityIdSystem : IExecuteSystem
         foreach (GameEntity nextId in _idNextIds)
         {
             idCandidate.AddId(nextId.NextId);
-            nextId.ChangeId(nextId.NextId + 1);
+            
+            nextId.ChangeNextId(nextId.NextId + 1);
+            
             idCandidate.SetNeedIdFlag(false);
         }
     }
