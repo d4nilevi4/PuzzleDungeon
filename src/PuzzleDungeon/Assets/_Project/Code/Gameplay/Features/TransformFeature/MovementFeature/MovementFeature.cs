@@ -1,7 +1,7 @@
 ﻿using Leontitas;
 using PuzzleDungeon.Core.Systems;
 
-namespace PuzzleDungeon.Gameplay.Transform;
+namespace PuzzleDungeon.Gameplay.Transformation;
 
 public sealed class MovementFeature : CustomFeature
 {

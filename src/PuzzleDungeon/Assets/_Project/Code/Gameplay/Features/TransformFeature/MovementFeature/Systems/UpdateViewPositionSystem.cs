@@ -1,6 +1,6 @@
 ﻿using Leontitas;
 
-namespace PuzzleDungeon.Gameplay.Transform;
+namespace PuzzleDungeon.Gameplay.Transformation;
 
 public sealed class UpdateViewPositionSystem : IExecuteSystem
 {

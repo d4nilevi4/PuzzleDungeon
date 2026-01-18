@@ -4,7 +4,7 @@ using PuzzleDungeon.Gameplay.Destruction;
 using PuzzleDungeon.Gameplay.Identification;
 using PuzzleDungeon.Gameplay.InputHandling;
 using PuzzleDungeon.Gameplay.Tiles;
-using PuzzleDungeon.Gameplay.Transform;
+using PuzzleDungeon.Gameplay.Transformation;
 
 namespace PuzzleDungeon.Gameplay;
 
