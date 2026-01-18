@@ -6,9 +6,9 @@ public sealed class DisposeInputMapTearDownSystem : ITearDownSystem
 {
     private readonly InputGroup _playerInputs;
 
-    public DisposeInputMapTearDownSystem(InputWorld input)
+    public DisposeInputMapTearDownSystem()
     {
-        _playerInputs = input.GetGroup(InputMatcher.AllOf(InputMatcher.PlayerInputComponent));
+        _playerInputs = InputWorld.GetGroup(InputMatcher.AllOf(InputMatcher.PlayerInput));
     }
     
     public void TearDown()

@@ -6,9 +6,9 @@ public sealed class InitializeMousePositionSystem : IInitializeSystem
 {
     private readonly InputGroup _gameInputActions;
 
-    public InitializeMousePositionSystem(InputWorld input)
+    public InitializeMousePositionSystem()
     {
-        _gameInputActions = input.GetGroup(InputMatcher.AllOf(InputMatcher.GameplayInputActions));
+        _gameInputActions = InputWorld.GetGroup(InputMatcher.AllOf(InputMatcher.GameplayInputActions));
     }
     
     public void Initialize()

@@ -6,9 +6,9 @@ public sealed class DestroyInputEventsCleanupSystem : ICleanupSystem
 {
     private readonly InputGroup _inputEvents;
 
-    public DestroyInputEventsCleanupSystem(InputWorld input)
+    public DestroyInputEventsCleanupSystem()
     {
-        _inputEvents = input.GetGroup(InputMatcher.AllOf(InputMatcher.Event));
+        _inputEvents = InputWorld.GetGroup(InputMatcher.AllOf(InputMatcher.Event));
     }
     
     public void Cleanup()

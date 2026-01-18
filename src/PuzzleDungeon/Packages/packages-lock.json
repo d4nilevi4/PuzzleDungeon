@@ -12,7 +12,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "d7976b4ab73565106cf226042daff4097c33fb2e"
+      "hash": "27af473aade9314fd16c5c5c46fb85cf64bfab44"
     },
     "com.d4nilevi4.leontitas.systems": {
       "version": "https://github.com/d4nilevi4/Leontitas.git?path=src/Leontitas.Unity/Systems",

@@ -6,9 +6,9 @@ public sealed class DestroyGameEventsCleanupSystem : ICleanupSystem
 {
     private readonly GameGroup _gameEvents;
 
-    public DestroyGameEventsCleanupSystem(GameWorld game)
+    public DestroyGameEventsCleanupSystem()
     {
-        _gameEvents = game.GetGroup(GameMatcher.AllOf(GameMatcher.Event));
+        _gameEvents = GameWorld.GetGroup(GameMatcher.AllOf(GameMatcher.Event));
     }
     
     public void Cleanup()

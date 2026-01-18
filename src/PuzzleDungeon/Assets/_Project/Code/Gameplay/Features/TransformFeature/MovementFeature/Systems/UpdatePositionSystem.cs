@@ -6,9 +6,9 @@ public sealed class UpdatePositionSystem : IExecuteSystem
 {
     private readonly GameGroup _movables;
 
-    public UpdatePositionSystem(GameWorld game)
+    public UpdatePositionSystem()
     {
-        _movables = game.GetGroup(GameMatcher
+        _movables = GameWorld.GetGroup(GameMatcher
             .AllOf(
                 GameMatcher.Position,
                 GameMatcher.TargetPosition,

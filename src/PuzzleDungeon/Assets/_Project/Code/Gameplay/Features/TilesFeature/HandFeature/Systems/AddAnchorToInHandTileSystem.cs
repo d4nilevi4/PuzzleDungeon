@@ -6,9 +6,9 @@ public sealed class AddAnchorToInHandTileSystem : IExecuteSystem
 {
     private readonly GameGroup _tiles;
 
-    public AddAnchorToInHandTileSystem(GameWorld world)
+    public AddAnchorToInHandTileSystem()
     {
-        _tiles = world.GetGroup(GameMatcher
+        _tiles = GameWorld.GetGroup(GameMatcher
             .AllOf(
                 GameMatcher.GameBoardTile,
                 GameMatcher.GameBoardTileInHand)

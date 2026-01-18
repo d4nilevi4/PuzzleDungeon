@@ -7,10 +7,10 @@ public sealed class UpdateMousePositionSystem : IPreExecuteSystem
     private readonly InputGroup _mousePositions;
     private readonly InputGroup _gameInputActions;
 
-    public UpdateMousePositionSystem(InputWorld input)
+    public UpdateMousePositionSystem()
     {
-        _mousePositions = input.GetGroup(InputMatcher.AllOf(InputMatcher.MousePosition));
-        _gameInputActions = input.GetGroup(InputMatcher.AllOf(InputMatcher.GameplayInputActions));
+        _mousePositions = InputWorld.GetGroup(InputMatcher.AllOf(InputMatcher.MousePosition));
+        _gameInputActions = InputWorld.GetGroup(InputMatcher.AllOf(InputMatcher.GameplayInputActions));
     }
     
     public void PreExecute()

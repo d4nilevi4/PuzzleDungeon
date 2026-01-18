@@ -7,13 +7,13 @@ public sealed class AssignEntityIdSystem : IExecuteSystem
     private readonly GameGroup _idCandidates;
     private readonly GameGroup _idNextIds;
 
-    public AssignEntityIdSystem(GameWorld game)
+    public AssignEntityIdSystem()
     {
-        _idCandidates = game.GetGroup(GameMatcher
+        _idCandidates = GameWorld.GetGroup(GameMatcher
             .AllOf(GameMatcher.NeedId)
             .NoneOf(GameMatcher.Id));
         
-        _idNextIds = game.GetGroup(GameMatcher.AllOf(GameMatcher.NextId));
+        _idNextIds = GameWorld.GetGroup(GameMatcher.AllOf(GameMatcher.NextId));
     }
     
     public void Execute()

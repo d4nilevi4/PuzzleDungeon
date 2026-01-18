@@ -9,9 +9,9 @@ public sealed class UpdateInHandTileAnchorsSystem : IExecuteSystem
     private readonly GameGroup _tiles;
     private readonly GameGroup _hands;
 
-    public UpdateInHandTileAnchorsSystem(GameWorld world)
+    public UpdateInHandTileAnchorsSystem()
     {
-        _tiles = world.GetGroup(GameMatcher
+        _tiles = GameWorld.GetGroup(GameMatcher
             .AllOf(
                 GameMatcher.GameBoardTile,
                 GameMatcher.GameBoardTileInHand,
@@ -19,7 +19,7 @@ public sealed class UpdateInHandTileAnchorsSystem : IExecuteSystem
                 GameMatcher.LinkedHand,
                 GameMatcher.InHandTileAnchor));
 
-        _hands = world.GetGroup(GameMatcher
+        _hands = GameWorld.GetGroup(GameMatcher
             .AllOf(
                 GameMatcher.Id,
                 GameMatcher.Hand,

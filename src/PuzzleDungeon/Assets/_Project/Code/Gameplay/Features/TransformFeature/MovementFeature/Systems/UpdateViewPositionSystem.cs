@@ -6,9 +6,9 @@ public sealed class UpdateViewPositionSystem : IExecuteSystem
 {
     private readonly GameGroup _entity;
 
-    public UpdateViewPositionSystem(GameWorld game)
+    public UpdateViewPositionSystem()
     {
-        _entity = game.GetGroup(GameMatcher
+        _entity = GameWorld.GetGroup(GameMatcher
             .AllOf(
                 GameMatcher.Position,
                 GameMatcher.EntityView));

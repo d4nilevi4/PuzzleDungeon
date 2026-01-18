@@ -6,9 +6,9 @@ public sealed class ApplyInHandTileAnchorToTargetPositionSystem : IExecuteSystem
 {
     private readonly GameGroup _tiles;
 
-    public ApplyInHandTileAnchorToTargetPositionSystem(GameWorld world)
+    public ApplyInHandTileAnchorToTargetPositionSystem()
     {
-        _tiles = world.GetGroup(GameMatcher
+        _tiles = GameWorld.GetGroup(GameMatcher
             .AllOf(
                 GameMatcher.GameBoardTile,
                 GameMatcher.GameBoardTileInHand,

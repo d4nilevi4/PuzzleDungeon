@@ -6,9 +6,9 @@ public sealed class HandleInteractionInputSystem : IPreExecuteSystem
 {
     private readonly InputGroup _gameInputActions;
 
-    public HandleInteractionInputSystem(InputWorld input)
+    public HandleInteractionInputSystem()
     {
-        _gameInputActions = input.GetGroup(InputMatcher.AllOf(InputMatcher.GameplayInputActions));
+        _gameInputActions = InputWorld.GetGroup(InputMatcher.AllOf(InputMatcher.GameplayInputActions));
     }
 
     public void PreExecute()

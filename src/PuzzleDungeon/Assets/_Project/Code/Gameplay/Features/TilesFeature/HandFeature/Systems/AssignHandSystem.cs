@@ -7,9 +7,9 @@ public sealed class AssignHandSystem : IExecuteSystem
     private readonly GameGroup _orphanTile;
     private readonly GameGroup _hands;
 
-    public AssignHandSystem(GameWorld game)
+    public AssignHandSystem()
     {
-        _orphanTile = game.GetGroup(GameMatcher
+        _orphanTile = GameWorld.GetGroup(GameMatcher
             .AllOf(
                 GameMatcher.GameBoardTile,
                 GameMatcher.GameBoardTileInHand)
@@ -17,7 +17,7 @@ public sealed class AssignHandSystem : IExecuteSystem
                 GameMatcher.LinkedHand,
                 GameMatcher.GameBoardTileInHandOrderIndex));
 
-        _hands = game.GetGroup(GameMatcher
+        _hands = GameWorld.GetGroup(GameMatcher
             .AllOf(
                 GameMatcher.Hand,
                 GameMatcher.HandPosition,

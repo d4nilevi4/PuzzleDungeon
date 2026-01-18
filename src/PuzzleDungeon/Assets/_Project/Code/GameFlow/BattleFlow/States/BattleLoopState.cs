@@ -15,8 +15,7 @@ public class BattleLoopState : IState
 {
     private readonly ILifetimeEventsProducer _lifetimeEventsProducer;
     private readonly ISystemFactory _systemFactory;
-    private readonly InputWorld _inputWorld;
-    private readonly GameWorld _gameWorld;
+
 
     private BattleFeature _battleFeature;
     
@@ -27,30 +26,29 @@ public class BattleLoopState : IState
 
     public BattleLoopState(
         ILifetimeEventsProducer lifetimeEventsProducer,
-        ISystemFactory systemFactory,
-        InputWorld inputWorld,
-        GameWorld gameWorld
+        ISystemFactory systemFactory
     )
     {
         _lifetimeEventsProducer = lifetimeEventsProducer;
         _systemFactory = systemFactory;
-        _inputWorld = inputWorld;
-        _gameWorld = gameWorld;
     }
     
     public UniTask Enter(CancellationToken cancellationToken)
     {
+        GameWorld.Create();
+        InputWorld.Create();
+        
         _battleFeature = (BattleFeature)_systemFactory.Create<BattleFeature>();
         
 #if UNITY_EDITOR
-        var dummyInputSystems = new EcsSystems(_inputWorld);
-        var dummyGameSystems = new EcsSystems(_gameWorld);
+        var dummyInputSystems = new EcsSystems(InputWorld.Instance);
+        var dummyGameSystems = new EcsSystems(GameWorld.Instance);
         
         _inputDebug = new EcsWorldDebugSystem(null, null);
         _gameDebug = new EcsWorldDebugSystem(null, null);
         
-        ((EcsWorld)_inputWorld).AddEventListener(_inputDebug);
-        ((EcsWorld)_gameWorld).AddEventListener(_gameDebug);
+        ((EcsWorld)InputWorld.Instance).AddEventListener(_inputDebug);
+        ((EcsWorld)GameWorld.Instance).AddEventListener(_gameDebug);
 
         _inputDebug.PreInit(dummyInputSystems);
         _gameDebug.PreInit(dummyGameSystems);
@@ -70,8 +68,8 @@ public class BattleLoopState : IState
         await Awaitable.EndOfFrameAsync(cancellationToken);
         
 #if UNITY_EDITOR
-        ((EcsWorld)_inputWorld).RemoveEventListener(_inputDebug);
-        ((EcsWorld)_gameWorld).RemoveEventListener(_gameDebug);
+        ((EcsWorld)InputWorld.Instance).RemoveEventListener(_inputDebug);
+        ((EcsWorld)GameWorld.Instance).RemoveEventListener(_gameDebug);
 #endif
         
         _lifetimeEventsProducer.EventInitialize -= OnInitialize;
@@ -80,7 +78,8 @@ public class BattleLoopState : IState
         _lifetimeEventsProducer.EventLateUpdate -= OnLateUpdate;
         _lifetimeEventsProducer.EventDestroy -= OnDestroy;
         
-        GameWorld.Instance.Destroy();
+        GameWorld.Destroy();
+        InputWorld.Destroy();
         _battleFeature = null;
     }
 

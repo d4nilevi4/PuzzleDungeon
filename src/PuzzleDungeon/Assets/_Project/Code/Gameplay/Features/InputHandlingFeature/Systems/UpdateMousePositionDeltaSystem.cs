@@ -7,10 +7,10 @@ public sealed class UpdateMousePositionDeltaSystem : IPreExecuteSystem
     private readonly InputGroup _mousePositions;
     private readonly InputGroup _gameInputActions;
 
-    public UpdateMousePositionDeltaSystem(InputWorld input)
+    public UpdateMousePositionDeltaSystem()
     {
-        _mousePositions = input.GetGroup(InputMatcher.AllOf(InputMatcher.MousePositionDelta));
-        _gameInputActions = input.GetGroup(InputMatcher.AllOf(InputMatcher.GameplayInputActions));
+        _mousePositions = InputWorld.GetGroup(InputMatcher.AllOf(InputMatcher.MousePositionDelta));
+        _gameInputActions = InputWorld.GetGroup(InputMatcher.AllOf(InputMatcher.GameplayInputActions));
     }
     
     public void PreExecute()
