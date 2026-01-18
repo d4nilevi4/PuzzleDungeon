@@ -8,5 +8,7 @@ public class TransformFeature : CustomFeature
     public TransformFeature(ISystemFactory systemFactory)
     {
         Add(systemFactory.Create<MovementFeature>());
+        
+        Add(systemFactory.Create<RotationFeature>());
     }
 }

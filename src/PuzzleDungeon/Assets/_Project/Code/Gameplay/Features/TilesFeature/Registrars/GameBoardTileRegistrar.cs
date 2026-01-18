@@ -10,10 +10,11 @@ namespace PuzzleDungeon.Gameplay.Tiles
             entity
                 .SetNeedIdFlag(true)
                 .SetMovableFlag(true)
+                .SetRotatableFlag(true)
+                .SetRotateTowardsCameraFlag(true)
                 .SetGameBoardTileFlag(true)
                 .SetGameBoardTileInHandFlag(true)
-                .AddGameBoardTileType(GameBoardTileType.None)
-                .AddPosition(transform.position);
+                .AddGameBoardTileType(GameBoardTileType.None);
         }
     }
 }
