@@ -4,8 +4,6 @@ namespace PuzzleDungeon.Gameplay.Tiles;
 
 public sealed class UpdateInHandTileAnchorsSystem : IExecuteSystem
 {
-    private const float TILE_SPACING = 1.5f;
-
     private readonly GameGroup _tiles;
     private readonly GameGroup _hands;
 
@@ -24,7 +22,8 @@ public sealed class UpdateInHandTileAnchorsSystem : IExecuteSystem
                 GameMatcher.Id,
                 GameMatcher.Hand,
                 GameMatcher.HandPosition,
-                GameMatcher.GameBoardTilesInHandCount));
+                GameMatcher.GameBoardTilesInHandCount,
+                GameMatcher.TileSpacing));
     }
 
     public void Execute()
@@ -33,7 +32,9 @@ public sealed class UpdateInHandTileAnchorsSystem : IExecuteSystem
         {
             int tilesCount = hand.GameBoardTilesInHandCount;
             Vector3 handCenter = hand.HandPosition;
-            float totalWidth = (tilesCount - 1) * TILE_SPACING;
+            float handTileSpacing = hand.TileSpacing;
+            
+            float totalWidth = (tilesCount - 1) * handTileSpacing;
             float startOffset = -totalWidth / 2f;
 
             foreach (GameEntity tile in _tiles)
@@ -42,7 +43,7 @@ public sealed class UpdateInHandTileAnchorsSystem : IExecuteSystem
                     continue;
 
                 int orderIndex = tile.GameBoardTileInHandOrderIndex;
-                float xOffset = startOffset + orderIndex * TILE_SPACING;
+                float xOffset = startOffset + orderIndex * handTileSpacing;
                 Vector3 targetPosition = handCenter + new Vector3(xOffset, 0, 0);
 
                 tile.InHandTileAnchorRef.Value = targetPosition;
