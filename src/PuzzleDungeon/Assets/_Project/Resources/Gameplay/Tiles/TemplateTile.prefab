@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 4554139664570190368}
   - component: {fileID: 8647428780288136166}
   - component: {fileID: 9146724069048831203}
+  - component: {fileID: 4793558494528148081}
   m_Layer: 0
   m_Name: TemplateTile
   m_TagString: Untagged
@@ -299,6 +300,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4823a3b922e642bd9bb93e285743fc9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: PuzzleDungeon.Unity::PuzzleDungeon.Unity.View.UnityEntityView
+--- !u!65 &4793558494528148081
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2434103768380812896}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.7, y: 0.7, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2623879603621043344
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,6 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b06e98022e344ebb293c87aa5bc2032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: PuzzleDungeon.Gameplay::PuzzleDungeon.Gameplay.Tiles.GameBoardTileRegistrar
+  InteractionCollider: {fileID: 4793558494528148081}
 --- !u!114 &4554499420625882045
 MonoBehaviour:
   m_ObjectHideFlags: 0
