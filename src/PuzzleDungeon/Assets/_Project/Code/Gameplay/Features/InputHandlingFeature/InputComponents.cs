@@ -10,3 +10,4 @@ namespace PuzzleDungeon.Gameplay.InputHandling;
 
 [Input] public struct InteractionPerformedEvent : IComponent { }
 [Input] public struct InteractionPressedEvent : IComponent { }
+[Input] public struct InteractionCompletedEvent : IComponent { }

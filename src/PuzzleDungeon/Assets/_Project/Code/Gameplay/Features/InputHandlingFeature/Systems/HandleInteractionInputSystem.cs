@@ -28,6 +28,13 @@ public sealed class HandleInteractionInputSystem : IPreExecuteSystem
                     .SetInteractionPressedEventFlag(true)
                     .SetEventFlag(true);
             }
+
+            if (inputAction.GameplayInputActions.Interaction.WasCompletedThisFrame())
+            {
+                InputEntity.Create()
+                    .SetInteractionCompletedEventFlag(true)
+                    .SetEventFlag(true);
+            }
         }
     }
 }
