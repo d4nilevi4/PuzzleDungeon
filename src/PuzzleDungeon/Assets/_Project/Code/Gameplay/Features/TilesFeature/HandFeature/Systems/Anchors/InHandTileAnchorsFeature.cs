@@ -9,6 +9,8 @@ public sealed class InHandTileAnchorsFeature : CustomFeature
     {
         Add(systemFactory.Create<AddAnchorToInHandTileSystem>());
         
+        Add(systemFactory.Create<UpdateInteractionColliderActivationForInHandTilesSystem>());
+        
         // anchor position systems
         Add(systemFactory.Create<HandleHandDeltaForInHandTileAnchorsSystem>());
         Add(systemFactory.Create<HandleHoveredDeltaForInHandTileAnchorsSystem>());
