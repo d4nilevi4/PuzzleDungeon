@@ -2,12 +2,12 @@
 
 namespace PuzzleDungeon.Gameplay.Tiles;
 
-public sealed class UpdateInHandTileAnchorsSystem : IExecuteSystem
+public sealed class HandleHandDeltaForInHandTileAnchorsSystem : IExecuteSystem
 {
     private readonly GameGroup _tiles;
     private readonly GameGroup _hands;
 
-    public UpdateInHandTileAnchorsSystem()
+    public HandleHandDeltaForInHandTileAnchorsSystem()
     {
         _tiles = GameWorld.GetGroup(GameMatcher
             .AllOf(
@@ -15,7 +15,7 @@ public sealed class UpdateInHandTileAnchorsSystem : IExecuteSystem
                 GameMatcher.GameBoardTileInHand,
                 GameMatcher.GameBoardTileInHandOrderIndex,
                 GameMatcher.LinkedHand,
-                GameMatcher.InHandTileAnchor));
+                GameMatcher.InHandTileAnchorDeltas));
 
         _hands = GameWorld.GetGroup(GameMatcher
             .AllOf(
@@ -33,7 +33,7 @@ public sealed class UpdateInHandTileAnchorsSystem : IExecuteSystem
             int tilesCount = hand.GameBoardTilesInHandCount;
             Vector3 handCenter = hand.HandPosition;
             float handTileSpacing = hand.TileSpacing;
-            
+
             float totalWidth = (tilesCount - 1) * handTileSpacing;
             float startOffset = -totalWidth / 2f;
 
@@ -46,7 +46,12 @@ public sealed class UpdateInHandTileAnchorsSystem : IExecuteSystem
                 float xOffset = startOffset + orderIndex * handTileSpacing;
                 Vector3 targetPosition = handCenter + new Vector3(xOffset, 0, 0);
 
-                tile.InHandTileAnchorRef.Value = targetPosition;
+                tile.InHandTileAnchorDeltas.Add(
+                    new AnchorDeltaPosition(targetPosition
+#if DEBUG
+                        , nameof(HandleHandDeltaForInHandTileAnchorsSystem)
+#endif
+                    ));
             }
         }
     }

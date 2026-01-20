@@ -1,4 +1,5 @@
-﻿using Leontitas;
+﻿using System.Collections.Generic;
+using Leontitas;
 
 namespace PuzzleDungeon.Gameplay.Tiles;
 
@@ -13,14 +14,16 @@ public sealed class AddAnchorToInHandTileSystem : IExecuteSystem
                 GameMatcher.GameBoardTile,
                 GameMatcher.GameBoardTileInHand)
             .NoneOf(
-                GameMatcher.InHandTileAnchor));
+                GameMatcher.InHandTileAnchorPosition,
+                GameMatcher.InHandTileAnchorDeltas));
     }
 
     public void Execute()
     {
         foreach (GameEntity tile in _tiles)
         {
-            tile.AddInHandTileAnchor(Vector3.zero);
+            tile.AddInHandTileAnchorPosition(Vector3.zero);
+            tile.AddInHandTileAnchorDeltas(new List<AnchorDeltaPosition>(4));
         }
     }
 }

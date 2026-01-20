@@ -8,8 +8,7 @@ public sealed class HandFeature : CustomFeature
     public HandFeature(ISystemFactory systemFactory)
     {
         Add(systemFactory.Create<AssignHandSystem>());
-        Add(systemFactory.Create<AddAnchorToInHandTileSystem>());
-        Add(systemFactory.Create<UpdateInHandTileAnchorsSystem>());
-        Add(systemFactory.Create<ApplyInHandTileAnchorToTargetPositionSystem>());
+        
+        Add(systemFactory.Create<InHandTileAnchorsFeature>());
     }
 }

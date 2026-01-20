@@ -12,14 +12,14 @@ public sealed class ApplyInHandTileAnchorToTargetPositionSystem : IExecuteSystem
             .AllOf(
                 GameMatcher.GameBoardTile,
                 GameMatcher.GameBoardTileInHand,
-                GameMatcher.InHandTileAnchor));
+                GameMatcher.InHandTileAnchorPosition));
     }
 
     public void Execute()
     {
         foreach (GameEntity tile in _tiles)
         {
-            tile.ReplaceTargetPosition(tile.InHandTileAnchor);
+            tile.ReplaceTargetPosition(tile.InHandTileAnchorPosition);
         }
     }
 }
