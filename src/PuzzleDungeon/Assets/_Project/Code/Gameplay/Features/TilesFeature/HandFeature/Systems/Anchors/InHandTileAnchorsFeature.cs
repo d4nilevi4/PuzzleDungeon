@@ -11,6 +11,8 @@ public sealed class InHandTileAnchorsFeature : CustomFeature
         
         // anchor position systems
         Add(systemFactory.Create<HandleHandDeltaForInHandTileAnchorsSystem>());
+        Add(systemFactory.Create<HandleHoveredDeltaForInHandTileAnchorsSystem>());
+        
         Add(systemFactory.Create<CalculateFinalInHandTileAnchorSystem>());
         
         // apply anchor to target position

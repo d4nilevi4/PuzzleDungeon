@@ -19,7 +19,8 @@ namespace PuzzleDungeon.Gameplay.Tiles
                 .SetGameBoardTileInHandFlag(true)
                 .AddGameBoardTileType(GameBoardTileType.None)
                 .SetInteractableFlag(true)
-                .AddInteractionCollider(InteractionCollider);
+                .AddInteractionCollider(InteractionCollider)
+                .AddInHandTileHoverDelta(.2f);
         }
     }
 }

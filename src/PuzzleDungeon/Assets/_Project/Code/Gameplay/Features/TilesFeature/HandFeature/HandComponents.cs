@@ -14,3 +14,5 @@ namespace PuzzleDungeon.Gameplay.Tiles;
 
 [Game] public struct InHandTileAnchorPosition : IComponent { public Vector3 Value; }
 [Game] public struct InHandTileAnchorDeltas : IComponent { public List<AnchorDeltaPosition> Value; }
+
+[Game] public struct InHandTileHoverDelta : IComponent { public float Value; }
