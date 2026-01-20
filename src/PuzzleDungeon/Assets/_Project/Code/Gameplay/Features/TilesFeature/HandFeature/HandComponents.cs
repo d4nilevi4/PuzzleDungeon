@@ -9,8 +9,7 @@ namespace PuzzleDungeon.Gameplay.Tiles;
 
 [Game] public struct Hand : IComponent { }
 [Game] public struct LinkedHand : IComponent { public int Value; }
-[Game] public struct HandPosition : IComponent { public Vector3 Value; }
-[Game] public struct TileSpacing : IComponent { public float Value; }
+[Game] public struct TileThickness : IComponent { public float Value; }
 
 [Game] public struct InHandTileAnchorPosition : IComponent { public Vector3 Value; }
 [Game] public struct InHandTileAnchorDeltas : IComponent { public List<AnchorDeltaPosition> Value; }

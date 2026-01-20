@@ -21,7 +21,6 @@ public sealed class AssignHandSystem : IExecuteSystem
         _hands = GameWorld.GetGroup(GameMatcher
             .AllOf(
                 GameMatcher.Hand,
-                GameMatcher.HandPosition,
                 GameMatcher.GameBoardTilesInHandCount));
     }
     

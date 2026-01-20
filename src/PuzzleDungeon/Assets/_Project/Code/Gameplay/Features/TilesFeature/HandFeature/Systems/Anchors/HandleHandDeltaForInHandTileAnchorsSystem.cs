@@ -21,21 +21,18 @@ public sealed class HandleHandDeltaForInHandTileAnchorsSystem : IExecuteSystem
             .AllOf(
                 GameMatcher.Id,
                 GameMatcher.Hand,
-                GameMatcher.HandPosition,
+                GameMatcher.Position,
                 GameMatcher.GameBoardTilesInHandCount,
-                GameMatcher.TileSpacing));
+                GameMatcher.TileThickness));
     }
 
     public void Execute()
     {
         foreach (GameEntity hand in _hands)
         {
-            int tilesCount = hand.GameBoardTilesInHandCount;
-            Vector3 handCenter = hand.HandPosition;
-            float handTileSpacing = hand.TileSpacing;
-
-            float totalWidth = (tilesCount - 1) * handTileSpacing;
-            float startOffset = -totalWidth / 2f;
+            Vector3 handCenter = hand.Position;
+            float handTileThickness = hand.TileThickness;
+            float startYOffset = handTileThickness / 2 + handCenter.y;
 
             foreach (GameEntity tile in _tiles)
             {
@@ -43,8 +40,8 @@ public sealed class HandleHandDeltaForInHandTileAnchorsSystem : IExecuteSystem
                     continue;
 
                 int orderIndex = tile.GameBoardTileInHandOrderIndex;
-                float xOffset = startOffset + orderIndex * handTileSpacing;
-                Vector3 targetPosition = handCenter + new Vector3(xOffset, 0, 0);
+                float yOffset = startYOffset + orderIndex * handTileThickness;
+                Vector3 targetPosition = handCenter + new Vector3(0, yOffset, 0);
 
                 tile.InHandTileAnchorDeltas.Add(
                     new AnchorDeltaPosition(targetPosition
