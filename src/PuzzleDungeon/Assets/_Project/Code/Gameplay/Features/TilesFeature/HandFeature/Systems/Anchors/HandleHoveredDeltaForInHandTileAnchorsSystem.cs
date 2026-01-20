@@ -5,7 +5,6 @@ namespace PuzzleDungeon.Gameplay.Tiles;
 public sealed class HandleHoveredDeltaForInHandTileAnchorsSystem : IExecuteSystem
 {
     private readonly GameGroup _tiles;
-    private readonly GameGroup _mainCameras;
 
     public HandleHoveredDeltaForInHandTileAnchorsSystem()
     {
@@ -17,18 +16,15 @@ public sealed class HandleHoveredDeltaForInHandTileAnchorsSystem : IExecuteSyste
                 GameMatcher.Hovered,
                 GameMatcher.InHandTileAnchorDeltas,
                 GameMatcher.InHandTileHoverDelta));
-        
-        _mainCameras = GameWorld.GetGroup(GameMatcher.AllOf(GameMatcher.MainCamera));
     }
     
     public void Execute()
     {
         foreach (GameEntity tile in _tiles)
-        foreach (GameEntity mainCamera in _mainCameras)
         {
             
             tile.InHandTileAnchorDeltas.Add(new AnchorDeltaPosition(
-                deltaPosition: tile.InHandTileHoverDelta * mainCamera.MainCamera.transform.up
+                deltaPosition: tile.InHandTileHoverDelta * Vector3.up
                 #if DEBUG
                 , debugName: nameof(HandleHoveredDeltaForInHandTileAnchorsSystem)
                 #endif

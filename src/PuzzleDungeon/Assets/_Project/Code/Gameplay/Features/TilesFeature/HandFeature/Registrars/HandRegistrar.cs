@@ -11,8 +11,7 @@ namespace PuzzleDungeon.Gameplay.Tiles
                 .SetHandFlag(true)
                 .SetNeedIdFlag(true)
                 .AddGameBoardTilesInHandCount(0)
-                .AddTileThickness(0.1f)
-                .AddPosition(transform.position);
+                .AddTileThickness(0.1f);
         }
     }
 }
