@@ -12,7 +12,8 @@ public sealed class ApplyInHandTileAnchorToTargetPositionSystem : IExecuteSystem
             .AllOf(
                 GameMatcher.GameBoardTile,
                 GameMatcher.GameBoardTileInHand,
-                GameMatcher.InHandTileAnchorPosition));
+                GameMatcher.InHandTileAnchorPosition,
+                GameMatcher.UpdateTargetPositionByInHandTileAnchor));
     }
 
     public void Execute()
