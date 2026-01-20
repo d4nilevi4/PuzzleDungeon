@@ -12,7 +12,8 @@ public sealed class AssignHandSystem : IExecuteSystem
         _orphanTile = GameWorld.GetGroup(GameMatcher
             .AllOf(
                 GameMatcher.GameBoardTile,
-                GameMatcher.GameBoardTileInHand)
+                GameMatcher.GameBoardTileInHand,
+                GameMatcher.OrphanTile)
             .NoneOf(
                 GameMatcher.LinkedHand,
                 GameMatcher.GameBoardTileInHandOrderIndex));
@@ -31,6 +32,7 @@ public sealed class AssignHandSystem : IExecuteSystem
         {
             orphanTile.AddLinkedHand(hand.Id);
             orphanTile.AddGameBoardTileInHandOrderIndex(hand.GameBoardTilesInHandCount);
+            orphanTile.IsOrphanTile = false;
             
             hand.GameBoardTilesInHandCountRef.Value++;
         }
