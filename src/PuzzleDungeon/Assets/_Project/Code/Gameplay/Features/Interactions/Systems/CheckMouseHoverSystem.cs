@@ -46,7 +46,13 @@ public sealed class CheckMouseHoverSystem : IPreExecuteSystem
 
     private bool TryGetHoveredCollider(Ray ray, out Collider hoveredCollider)
     {
-        int hitCount = Physics.RaycastNonAlloc(ray, _raycastHits, Mathf.Infinity);
+        int hitCount = Physics.RaycastNonAlloc(
+            ray: ray,
+            results: _raycastHits,
+            maxDistance: Mathf.Infinity,
+            layerMask: CollisionLayers.Interactable.AsMask(),
+            queryTriggerInteraction: QueryTriggerInteraction.Collide);
+        
         hoveredCollider = hitCount > 0 ? _raycastHits[0].collider : null;
         return hitCount > 0;
     }
